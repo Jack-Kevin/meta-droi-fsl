@@ -49,4 +49,5 @@ IMAGE_FEATURES += " \
 CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-core-full-cmdline \
     dhcp-server dhcp-client droi-shell \
+    python python-pyserial python-flask iperf3 \
 "
