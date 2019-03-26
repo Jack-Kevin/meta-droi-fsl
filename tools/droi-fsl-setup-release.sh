@@ -209,6 +209,11 @@ if [ -d ../sources/meta-freescale ]; then
     sed -e "s,\$.BSPDIR./sources/meta-fsl-arm-extra\s,,g" -i conf/bblayers.conf
 fi
 
+#override some bb
+if [ -e ../$BUILD_DIR/sources/meta-droi-fsl/override/sysvinit-inittab_2.88dsf.bb.org ]; then
+    cp ../$BUILD_DIR/sources/meta-droi-fsl/override/sysvinit-inittab_2.88dsf.bb.org ../$BUILD_DIR/sources/poky/meta/recipes-core/sysvinit/sysvinit-inittab_2.88dsf.bb
+fi
+
 cd  $BUILD_DIR
 clean_up
 unset FSLDISTRO
