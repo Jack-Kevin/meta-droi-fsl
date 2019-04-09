@@ -13,6 +13,7 @@ SRC_URI += "file://poweron-mt8183.sh \
 	file://fw_printenv \
 	file://fw_setenv \
 	file://update.sh \
+	file://reset-env.sh \
 "
 
 do_install_append () {
@@ -25,6 +26,7 @@ do_install_append () {
         install -m 0755 ${WORKDIR}/auto-gen-dhcp.py ${D}${sysconfdir}/init.d/auto-gen-dhcp.py
 
 	install -m 0755 ${WORKDIR}/update.sh ${D}${sysconfdir}/init.d/update.sh
+	install -m 0755 ${WORKDIR}/reset-env.sh ${D}${sysconfdir}/init.d/reset-env.sh
 
 	install -d ${D}${base_sbindir}
 	install -d ${D}${sysconfdir}

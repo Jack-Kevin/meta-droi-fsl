@@ -18,5 +18,6 @@ echo droi,slave_nxpinfo 0x2e > /sys/bus/i2c/devices/i2c-2/new_device
 
 /usr/bin/python /etc/init.d/droidApp.py &
 
+. /etc/init.d/reset-env.sh &
 : exit 0
 
