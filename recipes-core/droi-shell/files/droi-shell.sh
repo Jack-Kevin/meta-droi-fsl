@@ -18,6 +18,9 @@ echo droi,slave_nxpinfo 0x2e > /sys/bus/i2c/devices/i2c-2/new_device
 
 /usr/bin/python /etc/init.d/droidApp.py &
 
+/usr/bin/python /etc/init.d/auto-gen-dhcp.py &
+
 . /etc/init.d/reset-env.sh &
+
 : exit 0
 

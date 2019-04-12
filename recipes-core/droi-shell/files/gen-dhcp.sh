@@ -24,6 +24,7 @@ subnet 192.168.$1.0 netmask 255.255.255.0 {
 #  hardware ethernet $2;
 #  fixed-address 192.168.$1.200;
 #}
+
 EOF
 
 cat>/etc/network/interfaces<<EOF
@@ -40,5 +41,4 @@ EOF
 
 
 rm -rf /var/lib/dhcp/dhcpd.leases
-
-/etc/init.d/networking restart
+reboot
