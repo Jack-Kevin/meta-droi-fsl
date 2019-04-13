@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify, request
 import json
 import numpy as np
+import re
 
 
 VOL_RAW = '/sys/bus/iio/devices/iio:device0/in_voltage8_raw'
@@ -48,6 +49,11 @@ temp_array = np.array([
 def find_nearest(array,value):
     idx = (np.abs(array-value)).argmin()
     return idx #array[idx]
+
+def isvalidmac(mac):
+    if re.match(r"^\s*([0-9a-fA-F]{2,2}:){5,5}[0-9a-fA-F]{2,2}\s*$", mac):
+        return True
+    return False
 
 app = Flask(__name__)
 
@@ -162,8 +168,12 @@ def get_check(id):
 def setup_dhcp():
     #print request
     ip = request.form.get('ip')
+    mac = request.form.get('mac')
     os.environ['ip'] = ip
+    os.environ['mac'] = mac
     os.system('sh /etc/init.d/gen-dhcp.sh $ip &')
+    if isvalidmac(mac):
+        os.system('sh /etc/init.d/gen-mac-append.sh $ip $mac &')
     return '2001'
 
 @app.route('/pxk/post_mac', methods=['POST'])

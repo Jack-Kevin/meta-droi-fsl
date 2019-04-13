@@ -9,6 +9,7 @@ SRC_URI += "file://poweron-mt8183.sh \
 	file://droidApp.py \
 	file://gen-dhcp.sh \
 	file://auto-gen-dhcp.py \
+	file://gen-mac-append.sh \
 	file://fw_env.config \
 	file://fw_printenv \
 	file://fw_setenv \
@@ -24,6 +25,7 @@ do_install_append () {
         install -m 0755 ${WORKDIR}/droidApp.py ${D}${sysconfdir}/init.d/droidApp.py
         install -m 0755 ${WORKDIR}/gen-dhcp.sh ${D}${sysconfdir}/init.d/gen-dhcp.sh
         install -m 0755 ${WORKDIR}/auto-gen-dhcp.py ${D}${sysconfdir}/init.d/auto-gen-dhcp.py
+	install -m 0755 ${WORKDIR}/gen-mac-append.sh ${D}${sysconfdir}/init.d/gen-mac-append.sh
 
 	install -m 0755 ${WORKDIR}/update.sh ${D}${sysconfdir}/init.d/update.sh
 	install -m 0755 ${WORKDIR}/reset-env.sh ${D}${sysconfdir}/init.d/reset-env.sh

@@ -19,12 +19,6 @@ subnet 192.168.$1.0 netmask 255.255.255.0 {
     option netbios-name-servers 192.168.$1.1;
     option netbios-node-type 8;
 }
-
-#host debian {
-#  hardware ethernet $2;
-#  fixed-address 192.168.$1.200;
-#}
-
 EOF
 
 cat>/etc/network/interfaces<<EOF
